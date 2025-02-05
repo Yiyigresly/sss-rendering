@@ -1,0 +1,83 @@
+<div class="flex flex-col min-h-screen h-screen py-2 mt-3">
+
+  <div class="bg-orange-400 w-full min-h-20" >
+     <app-title Title="Defer options triggers"/>
+  </div>
+
+  <section>
+    <h2 class="text-xl font-semibold py-1">
+      Interacciones
+    </h2>
+    <hr class="my-1 mb-3">
+    @defer(on interaction){
+      <app-heavy-louders-fast 
+        cssClass="bg-green-500 px-2 my-4 h-20 text-center leading-[80px]"
+         >
+         <span class="text-green-800">On Interactions</span>
+      </app-heavy-louders-fast>
+    }@placeholder {
+      <p class="w-full h-15 h-20 border-2 border-green-600 my-2 leading-[80px] text-center cursor-pointer">
+         Click aqui para empezar la carga del componente
+      </p>
+    }  
+  </section>
+  <section>
+     <button class="px-2 py-1 border border-blue-600 rounded-md text-blue-800"
+     #interactionBtn>
+      click me
+     </button>
+    <hr class="my-1 mb-3">
+    @defer(on interaction(interactionBtn)){
+      <app-heavy-louders-fast 
+        cssClass="bg-green-500 px-2 my-4 h-20 text-center leading-[80px]"
+         >
+         <span class="text-green-800">On Interactions</span>
+      </app-heavy-louders-fast>
+    }
+  </section>
+  <section>
+    <div #hoverTrigger
+    class="w-full mt-3 h-10 leading-[40px] border border-purple-500 my-2 text-center">
+      Pasa el ratón encima de mi
+    </div>
+    
+    @defer(on hover(hoverTrigger)){
+      <heavy-louders-slow cssClass="bg-purple-300 px-2 my-4" />
+    }
+  </section>
+  
+  <section>
+    
+    <!-- @defer(on timer(500ms)){
+      <heavy-louders-slow cssClass="bg-orange-300 px-2 my-4" />
+    }@placeholder {
+      <p class="w-full h-15 h-20 border-2 border-orange-600 my-2 leading-[80px] text-center cursor-pointer">
+      Cargando con el timer pasados 500ms
+     </p>
+    } -->
+  </section>
+  
+  <section>
+    
+    @defer(on timer(1s); on interaction){
+      <heavy-louders-slow cssClass="bg-pink-300 px-2 my-4" />
+    }@placeholder {
+      <p class="w-full h-15 h-20 border-2 border-pink-600 my-2 leading-[80px] text-center cursor-pointer">
+        Uso combinado de trigers
+       </p>
+    }
+  </section>
+
+  <section class="mb-3">
+    @defer(on viewport){
+      <app-heavy-louders-fast cssClass="bg-gray-500 min-h-10">
+          <span>On viewport</span>
+      </app-heavy-louders-fast>
+    }
+    @placeholder {
+      <p>Cargando el componente defer</p>
+    }
+  </section>
+  
+
+</div>

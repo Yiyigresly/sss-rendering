@@ -1,0 +1,33 @@
+ <h1 class="text-3xl text-center">
+  Angular Material
+</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3"> 
+  <p><mat-slide-toggle>Slide me!</mat-slide-toggle></p>
+  <div class="demo-section">
+    Icon with a badge
+    <mat-icon matBadge="15" aria-hidden="false">home</mat-icon>
+      <!-- Include text description of the icon's meaning for screen-readers -->
+      <span class="cdk-visually-hidden">
+        Example with a home icon with overlaid badge showing the number 15
+      </span>
+  </div>
+
+  <p>You have received a file called "cat-picture.jpeg".</p>
+
+  <button mat-raised-button (click)="openBottomSheet()">Open file</button>
+  <section>
+    <div class="example-label">Mini FAB</div>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <button mat-mini-fab aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <button mat-flat-button>Basic</button>
+</div>

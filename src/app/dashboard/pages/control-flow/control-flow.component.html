@@ -1,0 +1,66 @@
+<app-title Title="Soy el título" withShadow/>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <!---->
+  <div class="bg-white rounded shadow p-10">
+    
+    <h2 class="font-bold text-xl mb-3">if: {{ showContent() }}</h2>
+    <button
+    (click)="toggleContent()"
+    class="px-3 py-1 rounded bg-blue-500 text-white"
+    >
+    click me
+  </button>
+  
+  @if (showContent()) {
+    <p>Mostrando cuando sea true</p>
+  }@else {
+    <p>**********</p>
+  }
+ </div>
+ <div class="bg-white rounded shadow p-10">
+    <h2 class="font-bold text-xl mb-3">Switch</h2>
+    @switch (grade()) {
+      @case('A'){
+       <p>Arriba de 90</p>
+      } @case('B'){
+       <p>Arriba de 80</p>
+      } @case('D'){
+       <p>Aprobado por lo pelos</p>
+      } @case('F'){
+       <p>Reprobado</p>
+      } 
+    }
+  </div>
+ <div class="bg-white rounded shadow p-10">
+    <h2 class="font-bold text-xl mb-3"></h2>
+    <ul class="text-white font-bold">
+      @for (framework of framworks(); track $index
+      ; let i = $index, count = $count, odd = $odd, even = $even, first = $first, last= $last) {
+
+        <li 
+         class="p-2"
+         [ngClass]="{
+            'bg-red-300': odd && !first && !last, 
+            'bg-green-300': even && !first && !last, 
+            'bg-yellow-300': first, 
+            'bg-blue-300': last, 
+        }">
+          {{ i + 1}}/{{ count }}.- {{ framework }}
+        </li>
+
+      }
+    </ul>
+  </div>
+ <div class="bg-white rounded shadow p-10">
+    <h2 class="font-bold text-xl mb-3"></h2>
+    <ul>
+      @for (framework of framworks2(); track $index) {
+         <li>{{ framework }}</li>
+      }@empty {
+         <li>No hay ningun framework. Añade alguno.</li>
+      }
+    </ul>
+  </div>
+</section>
+
+
